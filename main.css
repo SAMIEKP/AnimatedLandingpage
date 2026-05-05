@@ -7,7 +7,7 @@
 .background {
   position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   top: 0;
   left: 0;
   background: #213d56;
@@ -123,10 +123,14 @@
 
 .banner{
     width: 100%;
-    height: 100vh;
+    height: auto;
+    min-height: 85vh;
+    max-height: 100vh;
     text-align: center;
     overflow: hidden;
     position: relative;
+    padding-bottom: 25vh;
+    margin-bottom: -25vh;
 }
 .banner .logo{
     position: absolute;
@@ -183,12 +187,12 @@
 }
 .banner .content{
     position: absolute;
-    bottom: 0;
+    bottom: 15vh;
     left: 0;
     width: 100%;
     box-sizing: border-box;
     height: max-content;
-    padding: 0 50px 100px;
+    padding: 0 50px 30px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -222,7 +226,7 @@
     font-size: 3em;
 }
 .banner .content .model{
-    background-image: url(model.png);
+    background-image: url(Images/model.png);
     width: 30%;
     height: 55vh;
     position: absolute;
@@ -248,17 +252,48 @@
 }
 
 .nav-button {
-    background-color: transparent;
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(20px);
     color: #fff;
-    font-weight: bold;
-    padding: 10px 15px;
+    font-weight: 700;
+    padding: 14px 24px;
     font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(5, 5, 5, 0.1);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 25px;
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.3);
     cursor: pointer;
     font-family: 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.nav-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.nav-button:hover::before {
+    left: 100%;
+}
+
+.nav-button:hover {
+    background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    border-color: rgba(255,255,255,0.4);
 }
 
 .nav-content {
@@ -307,19 +342,26 @@
 
 /* For mobile devices */
 @media (max-width: 768px) {
+    .banner {
+        min-height: 100vh;
+        max-height: 100vh;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
     .banner .logo{
-        top: 20px;
-        left: 20px;
+        top: 15px;
+        left: 15px;
     }
     .banner .logo img{
         width: 120px;
     }
 
     .banner .slider {
-        width: 120px;
-        height: 120px;
-        left: calc(50% - 60px);
-        top: 15%;
+        width: 100px;
+        height: 100px;
+        left: calc(50% - 50px);
+        top: 20%;
     }
 
     .banner .slider .item {
@@ -390,4 +432,193 @@
     .nav-content a {
         padding: 10px 14px;
     }
+
+    /* New sections styles */
+.banner {
+        height: calc(100vh - 20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    .services, .contact {
+        position: absolute;
+        top: 100vh;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        padding: 50px 20px;
+        overflow-y: auto;
+        z-index: 2;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        scroll-snap-align: none;
+    }
+
+    .services {
+        background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,248,255,0.9));
+        backdrop-filter: blur(10px);
+    }
+
+    .contact {
+        background: rgba(33,61,86,0.05);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .services h2, .contact h2 {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: clamp(2em, 5vw, 3.5em);
+        text-align: center;
+        margin-bottom: 3em;
+        color: #213d56;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2em;
+        margin-bottom: 4em;
+    }
+
+    .service-card {
+        background: rgba(255,255,255,0.9);
+        padding: 2.5em 2em;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(0,109,91,0.2);
+    }
+
+    .service-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    }
+
+    .service-card h3 {
+        font-size: 1.8em;
+        color: #006D5B;
+        margin-bottom: 1em;
+        font-family: 'Arial Narrow Bold', sans-serif;
+    }
+
+    .service-card p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .cta-button {
+        display: block;
+        width: 280px;
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 18px 40px;
+        background: linear-gradient(45deg, #006D5B 0%, #FF6F61 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-align: center;
+        transition: all 0.3s;
+        box-shadow: 0 10px 30px rgba(0,109,91,0.4);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(0,109,91,0.5);
+    }
+
+    .contact form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: rgba(255,255,255,0.9);
+        padding: 2.5em;
+        border-radius: 15px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .contact input, 
+    .contact textarea, 
+    .contact button {
+        width: 100%;
+        padding: 15px 20px;
+        margin-bottom: 1.5em;
+        border: 2px solid rgba(0,109,91,0.2);
+        border-radius: 8px;
+        font-size: 16px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    .contact input:focus, 
+    .contact textarea:focus {
+        outline: none;
+        border-color: #006D5B;
+        box-shadow: 0 0 0 3px rgba(0,109,91,0.1);
+    }
+
+    .contact textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .contact button {
+        background: linear-gradient(45deg, #006D5B, #FF6F61);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .contact button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0,109,91,0.4);
+    }
+
+    /* Smooth scroll behavior */
+html {
+        scroll-behavior: auto;
+        height: auto;
+        overflow: auto;
+    }
+
+    body {
+        height: auto;
+        overflow: auto;
+        margin: 0;
+        scroll-snap-type: none;
+        min-height: 100vh;
+    }
+
+    /* Background balls visible on new sections */
+    .services, .contact {
+        position: relative;
+    }
+
+    /* Responsive for new sections */
+    @media (max-width: 768px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5em;
+        }
+
+        .contact form {
+            padding: 2em 1.5em;
+        }
+    }
 }
+
