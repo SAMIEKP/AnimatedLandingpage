@@ -16,8 +16,8 @@
 
 .ball {
   position: absolute;
-  width: 20vmin;
-  height: 20vmin;
+  width: 15vmin;
+  height: 15vmin;
   border-radius: 50%;
   backface-visibility: hidden;
   animation: move linear infinite;
@@ -236,11 +236,7 @@
     background-repeat: no-repeat;
     background-position: top center;
     z-index: -1;
-    filter: drop-shadow(2px 0 0 #ffffff)
-            drop-shadow(-2px 0 0 #ffffff)
-            drop-shadow(0 2px 0 #ffffff)
-            drop-shadow(0 -2px 0 #ffffff)
-            drop-shadow(10px 10px 15px rgba(10,10,10,10.4));
+    filter: drop-shadow(5px 5px 20px rgba(0,0,0,0.3));
 }
 
 /* ======== Navigation Dropdown ======== */
@@ -319,7 +315,7 @@
 
 .nav-content a:hover {background-color: #2b2727;}
 .navigation:hover .nav-content {display: block;}
-.navigation:hover .nav-button {background-color: #275067;}
+
 
 /* ======== Responsive Design ======== */
 
