@@ -1,4 +1,4 @@
-# 🚗 CAR CARE - Animated Landing Page
+# CAR CARE - Animated Landing Page
 
 ## Overview
 single-page animated landing page for electric & sports car care services. Features CSS-only 3D slider, floating particles, glassmorphism nav, non-scrollable viewport with overlay sections.
